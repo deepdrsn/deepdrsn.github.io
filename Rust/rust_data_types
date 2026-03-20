@@ -1,0 +1,66 @@
+fn main() {
+    // =========================
+    // SCALAR TYPES
+    // =========================
+
+    // Integer types
+    let a: i32 = -10;
+    let b: u32 = 20;
+
+    // Floating point types
+    let x: f32 = 3.14;
+    let y: f64 = 2.71828;
+
+    // Boolean
+    let is_rust_fun: bool = true;
+
+    // Character
+    let letter: char = 'R';
+
+    // =========================
+    // COMPOUND TYPES
+    // =========================
+
+    // Tuple
+    let tup: (i32, f64, char) = (42, 6.28, 'Z');
+    let (t1, t2, t3) = tup;
+
+    // Array
+    let arr: [i32; 5] = [1, 2, 3, 4, 5];
+
+    // =========================
+    // STRING TYPES
+    // =========================
+
+    // String slice (&str)
+    let greeting: &str = "Hello";
+
+    // Owned String
+    let mut name: String = String::from("Rust");
+    name.push_str(" Language");
+
+    // =========================
+    // REFERENCES
+    // =========================
+
+    let ref_to_a: &i32 = &a;
+
+    // =========================
+    // PRINTING EVERYTHING
+    // =========================
+
+    println!("Integer i32: {}", a);
+    println!("Unsigned u32: {}", b);
+    println!("Float f32: {}", x);
+    println!("Float f64: {}", y);
+    println!("Boolean: {}", is_rust_fun);
+    println!("Character: {}", letter);
+
+    println!("Tuple values: {}, {}, {}", t1, t2, t3);
+    println!("Array values: {:?}", arr);
+
+    println!("String slice: {}", greeting);
+    println!("Owned String: {}", name);
+
+    println!("Reference to a: {}", ref_to_a);
+}
