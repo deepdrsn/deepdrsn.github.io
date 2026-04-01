@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0a0a0a;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Center content */
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+}
+
+p {
+  margin-top: 10px;
+  opacity: 0.6;
+}
+
+/* Button */
+button {
+  margin-top: 30px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+
+/* Smooth cursor */
+.cursor {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(6px);
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<div class="container">
+  <h1>NAMASTE</h1>
+  <p>स्वागतम्‌ </p>
+  <button onclick="clickEffect()">enter</button>
+</div>
+
+<script>
+// Smooth cursor system
+const cursor = document.getElementById("cursor");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animate() {
+  currentX += (mouseX - currentX) * 0.1;
+  currentY += (mouseY - currentY) * 0.1;
+
+  cursor.style.left = currentX + "px";
+  cursor.style.top = currentY + "px";
+
+  // Stretch effect
+  let dx = mouseX - currentX;
+  let dy = mouseY - currentY;
+  let speed = Math.sqrt(dx * dx + dy * dy);
+
+  let scaleX = 1 + Math.min(speed / 150, 0.4);
+  let scaleY = 1 - Math.min(speed / 300, 0.3);
+
+  cursor.style.transform =
+    `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// Click effect
+function clickEffect() {
+  cursor.style.transform = "translate(-50%, -50%) scale(0.6)";
+  setTimeout(() => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+  }, 150);
+}
+</script>
+
+</body>
+</html>
